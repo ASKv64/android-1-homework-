@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="Калькулятор"
+        android:text="Калькулятор LL"
         android:textAlignment="center"
         android:textColor="#001AC3"
         android:textSize="30sp"
