@@ -3,16 +3,158 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editText"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDel"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/del"
+        app:backgroundTint="@color/colorSymbols"
+        app:layout_constraint/>
+
+    <Button
+        android:id="@+id/buttonCE"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/ce"
+        app:backgroundTint="@color/colorSymbols" />
+
+    <Button
+        android:id="@+id/buttonC"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/c"
+        app:backgroundTint="@color/colorSymbols" />
+
+    <Button
+        android:id="@+id/buttonOne"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/_1" />
+
+    <Button
+        android:id="@+id/buttonTwo"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/_2" />
+
+    <Button
+        android:id="@+id/buttonThree"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/_3" />
+
+    <Button
+        android:id="@+id/buttonFour"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/_4" />
+
+    <Button
+        android:id="@+id/buttonFive"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/_5" />
+
+    <Button
+        android:id="@+id/buttonSix"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/_6" />
+
+    <Button
+        android:id="@+id/buttonSeven"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:layout_marginEnd="8dp"
+        android:text="@string/_7" />
+
+    <Button
+        android:id="@+id/buttonEight"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:layout_marginEnd="8dp"
+        android:text="@string/_8" />
+
+    <Button
+        android:id="@+id/buttonNine"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:layout_marginEnd="8dp"
+        android:text="@string/_9" />
+
+    <Button
+        android:id="@+id/buttonZero"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/_0" />
+
+    <Button
+        android:id="@+id/buttonSlash"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:layout_marginEnd="32dp"
+        android:text="@string/slash"
+        app:backgroundTint="@color/colorSymbols" />
+
+    <Button
+        android:id="@+id/buttonMultiply"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/multiply"
+        app:backgroundTint="@color/colorSymbols" />
+
+    <Button
+        android:id="@+id/buttonMinus"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="@string/minus"
+        app:backgroundTint="@color/colorSymbols" />
+
+    <Button
+        android:id="@+id/buttonPlus"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/plus"
+        app:backgroundTint="@color/colorSymbols" />
+
+    <Button
+        android:id="@+id/buttonNegativePositive"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/negativePositive"
+        app:backgroundTint="@color/colorSymbols"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="481dp" />
+
+    <Button
+        android:id="@+id/buttonPoint"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/point"
+        app:backgroundTint="@color/colorSymbols"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/buttonEqually"/>
+
+    <Button
+        android:id="@+id/buttonEqually"
+        android:layout_width="@dimen/buttonSize"
+        android:layout_height="@dimen/buttonSize"
+        android:text="@string/equally"
+        app:backgroundTint="@color/colorEqually"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/buttonPoint"
+        app:layout_constraintTop_toBottomOf="@id/buttonPlus"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
