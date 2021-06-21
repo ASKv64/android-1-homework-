@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorEqually">#4CAF50</color>
     <color name="colorSymbols">#FF5722</color>
+    <color name="colorNumbers">#2A2CDC</color>
 </resources>
