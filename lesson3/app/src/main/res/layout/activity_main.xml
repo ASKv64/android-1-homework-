@@ -27,7 +27,8 @@
         app:layout_constraintEnd_toStartOf="@id/buttonCE"
         app:layout_constraintBottom_toTopOf="@id/buttonSeven"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_bias="1"/>
+        app:layout_constraintVertical_bias="1"
+        />
 
     <Button
         android:id="@+id/buttonCE"
