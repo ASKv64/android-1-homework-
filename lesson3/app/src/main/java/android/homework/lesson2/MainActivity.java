@@ -10,6 +10,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    float first = 0F;
+    float second = 0F;
+    int action = 0;
+    int nP = 0;
+    int point = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,17 +68,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         TextView textView = findViewById(R.id.textView);
+        TextView textView2 = findViewById(R.id.textView2);
         String a = (String) textView.getText();
-        switch (v.getId()){
+        String b = (String) textView2.getText();
+        switch (v.getId()) {
             case R.id.buttonDel:
-                if (a.length() > 0)
-                textView.setText(a.substring(0, a.length() - 1));
+                if (a.length() > 0){
+                    int i = a.length() - 1;
+                    if (a.charAt(i) == '-'){
+                        nP = 0;
+                    }
+                    if (a.charAt(i) == '.'){
+                        point = 0;
+                    }
+                    textView.setText(a.substring(0, a.length() - 1));
+                }
                 break;
             case R.id.buttonCE:
                 textView.setText("");
+                action = 0;
+                point = 0;
+                nP = 0;
                 break;
             case R.id.buttonC:
                 textView.setText("");
+                textView2.setText("");
+                action = 0;
+                point = 0;
+                nP = 0;
                 break;
             case R.id.buttonOne:
                 textView.setText(a + "1");
@@ -105,25 +128,116 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textView.setText(a + "0");
                 break;
             case R.id.buttonSlash:
-                textView.setText(a + "/");
-                break;
+                if (a.length() != 0) {
+                    first = Float.parseFloat(a);
+                    action = 1;
+                    nP = 0;
+                    point = 0;
+                    textView2.setText(a + " / ");
+                    textView.setText("");
+                    break;
+                } else {
+                    break;
+                }
             case R.id.buttonMultiply:
-                textView.setText(a + "*");
-                break;
+                if (a.length() != 0) {
+                    first = Float.parseFloat(a);
+                    action = 2;
+                    nP = 0;
+                    point = 0;
+                    textView2.setText(a + " * ");
+                    textView.setText("");
+                    break;
+                } else {
+                    break;
+                }
             case R.id.buttonMinus:
-                textView.setText(a + "-");
-                break;
+                if (a.length() != 0) {
+                    first = Float.parseFloat(a);
+                    action = 3;
+                    nP = 0;
+                    point = 0;
+                    textView2.setText(a + " - ");
+                    textView.setText("");
+                    break;
+                } else {
+                    break;
+                }
             case R.id.buttonPlus:
-                textView.setText(a + "+");
-                break;
+                if (a.length() != 0) {
+                    first = Float.parseFloat(a);
+                    action = 4;
+                    nP = 0;
+                    point = 0;
+                    textView2.setText(a + " + ");
+                    textView.setText("");
+                    break;
+                } else {
+                    break;
+                }
             case R.id.buttonNegativePositive:
-                Toast.makeText(getApplicationContext(),"Пока не придумал как", Toast.LENGTH_SHORT).show();
+                if (nP == 0) {
+                    textView.setText("-" + a);
+                    nP = 1;
+                } else {
+                    textView.setText(a.substring(1));
+                    nP = 0;
+                }
                 break;
             case R.id.buttonPoint:
-                textView.setText(a + ".");
-                break;
+                if (a.length() > 0 && point == 0) {
+                    if (nP != 1) {
+                        textView.setText(a + ".");
+                        point = 1;
+                        break;
+                    } else if (a.length() > 1) {
+                        textView.setText(a + ".");
+                        point = 1;
+                        break;
+                    }
+                    break;
+                } else {
+                    break;
+                }
             case R.id.buttonEqually:
-                textView.setText("Все посчитано\n=)");
+                float answer = 0F;
+                if (action == 0) {
+                    Toast.makeText(getApplicationContext(), "Выберите действие", Toast.LENGTH_SHORT).show();
+                    break;
+                } else if (action == 1) {
+                    if(a.length() == 0) {
+                        break;
+                    } else {
+                        second = Float.parseFloat(a);
+                        answer = first / second;
+                    }
+                } else if (action == 2) {
+                    if(a.length() == 0) {
+                        break;
+                    } else {
+                        second = Float.parseFloat(a);
+                        answer = first * second;
+                    }
+                } else if (action == 3) {
+                    if(a.length() == 0) {
+                        break;
+                    } else {
+                        second = Float.parseFloat(a);
+                        answer = first - second;
+                    }
+                } else if (action == 4) {
+                    if(a.length() == 0) {
+                        break;
+                    } else {
+                        second = Float.parseFloat(a);
+                        answer = first + second;
+                    }
+                }
+                point = 0;
+                nP = 0;
+                action = 0;
+                textView.setText("= " + answer);
+                textView2.setText(b + a);
                 break;
         }
     }
