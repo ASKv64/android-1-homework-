@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         Button bDel = findViewById(R.id.buttonDel);
+        Button bCE = findViewById(R.id.buttonCE);
         Button bC = findViewById(R.id.buttonC);
         Button b1 = findViewById(R.id.buttonOne);
         Button b2 = findViewById(R.id.buttonTwo);
@@ -26,8 +28,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button b8 = findViewById(R.id.buttonEight);
         Button b9 = findViewById(R.id.buttonNine);
         Button b0 = findViewById(R.id.buttonZero);
+        Button bSlash = findViewById(R.id.buttonSlash);
+        Button bMultiply = findViewById(R.id.buttonMultiply);
+        Button bMinus = findViewById(R.id.buttonMinus);
+        Button bPlus = findViewById(R.id.buttonPlus);
+        Button bNegativePositive = findViewById(R.id.buttonNegativePositive);
+        Button bPoint = findViewById(R.id.buttonPoint);
+        Button bEqually = findViewById(R.id.buttonEqually);
 
         bDel.setOnClickListener(this);
+        bCE.setOnClickListener(this);
+        bC.setOnClickListener(this);
         bC.setOnClickListener(this);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
@@ -39,6 +50,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b8.setOnClickListener(this);
         b9.setOnClickListener(this);
         b0.setOnClickListener(this);
+        bSlash.setOnClickListener(this);
+        bMultiply.setOnClickListener(this);
+        bMinus.setOnClickListener(this);
+        bPlus.setOnClickListener(this);
+        bNegativePositive.setOnClickListener(this);
+        bPoint.setOnClickListener(this);
+        bEqually.setOnClickListener(this);
     }
 
     @Override
@@ -49,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonDel:
                 if (a.length() > 0)
                 textView.setText(a.substring(0, a.length() - 1));
+                break;
+            case R.id.buttonCE:
+                textView.setText("");
                 break;
             case R.id.buttonC:
                 textView.setText("");
@@ -82,6 +103,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.buttonZero:
                 textView.setText(a + "0");
+                break;
+            case R.id.buttonSlash:
+                textView.setText(a + "/");
+                break;
+            case R.id.buttonMultiply:
+                textView.setText(a + "*");
+                break;
+            case R.id.buttonMinus:
+                textView.setText(a + "-");
+                break;
+            case R.id.buttonPlus:
+                textView.setText(a + "+");
+                break;
+            case R.id.buttonNegativePositive:
+                Toast.makeText(getApplicationContext(),"Пока не придумал как", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.buttonPoint:
+                textView.setText(a + ".");
+                break;
+            case R.id.buttonEqually:
+                textView.setText("Все посчитано\n=)");
                 break;
         }
     }
