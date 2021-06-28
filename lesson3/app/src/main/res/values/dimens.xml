@@ -6,4 +6,6 @@
     <dimen name="textView">50sp</dimen>
     <dimen name="textViewWidth">320dp</dimen>
     <dimen name="textViewMarginBottom">20dp</dimen>
+    <dimen name="buttonNumbers">30sp</dimen>
+    <dimen name="buttonsDelCe">18sp</dimen>
 </resources>
