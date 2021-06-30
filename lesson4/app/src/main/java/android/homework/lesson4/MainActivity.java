@@ -1,4 +1,4 @@
-package android.homework.lesson2;
+package android.homework.lesson4;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -80,13 +79,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        Log.d(LOG_TAG, "onRestoreInstanceState");
         nP = savedInstanceState.getInt("nP");
         action = savedInstanceState.getInt("action");
         point = savedInstanceState.getInt("point");
         equally = savedInstanceState.getInt("equally");
         textViewOne.setText(savedInstanceState.getString("textViewOne"));
         textViewTwo.setText(savedInstanceState.getString("textViewTwo"));
-        Log.d(LOG_TAG, "onRestoreInstanceState");
     }
 
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -115,10 +114,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         a = (String) textViewOne.getText();
         b = (String) textViewTwo.getText();
-        int i = a.length() - 1;
         switch (v.getId()) {
             case R.id.buttonDel:
                 if (a.length() > 0){
+                    int i = a.length() - 1;
                     if (a.charAt(i) == '-'){
                         nP = 0;
                     }
@@ -177,8 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     action = 1;
                     nP = 0;
                     point = 0;
-                    if (a.charAt(i) == '.') textViewTwo.setText(a.substring(0, a.length() - 1) + " / ");
-                    else textViewTwo.setText(a + " / ");
+                    textViewTwo.setText(a + " / ");
                     textViewOne.setText("");
                 }
                 break;
@@ -188,8 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     action = 2;
                     nP = 0;
                     point = 0;
-                    if (a.charAt(i) == '.') textViewTwo.setText(a.substring(0, a.length() - 1) + " * ");
-                    else textViewTwo.setText(a + " * ");
+                    textViewTwo.setText(a + " * ");
                     textViewOne.setText("");
                 }
                 break;
@@ -199,8 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     action = 3;
                     nP = 0;
                     point = 0;
-                    if (a.charAt(i) == '.') textViewTwo.setText(a.substring(0, a.length() - 1) + " - ");
-                    else textViewTwo.setText(a + " - ");
+                    textViewTwo.setText(a + " - ");
                     textViewOne.setText("");
                 }
                 break;
@@ -210,8 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     action = 4;
                     nP = 0;
                     point = 0;
-                    if (a.charAt(i) == '.') textViewTwo.setText(a.substring(0, a.length() - 1) + " + ");
-                    else textViewTwo.setText(a + " + ");
+                    textViewTwo.setText(a + " + ");
                     textViewOne.setText("");
                 }
                 break;
@@ -272,8 +267,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 equally = 1;
                 textViewOne.setText("= " + answer);
-                if (a.charAt(i) == '.') textViewTwo.setText(b + a.substring(0, a.length() - 1));
-                else textViewTwo.setText(b + a);
+                textViewTwo.setText(b + a);
                 break;
         }
     }
