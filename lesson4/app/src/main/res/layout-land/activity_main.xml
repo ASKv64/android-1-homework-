@@ -14,9 +14,9 @@
         android:textAlignment="center"
         android:textSize="@dimen/textView"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutTwo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/constraintLayoutOne" />
 
     <TextView
         android:id="@+id/textView2"
@@ -28,61 +28,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/constraintLayoutOne" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/constraintLayoutOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1">
+        app:layout_constraintEnd_toStartOf="@id/constraintLayoutTwo">
 
-        <Button
-            android:id="@+id/buttonDel"
-            android:layout_width="@dimen/buttonSize"
-            android:layout_height="@dimen/buttonSize"
-            android:layout_margin="@dimen/marginButtons"
-            android:text="@string/del"
-            android:textSize="@dimen/buttonsDelCe"
-            app:backgroundTint="@color/colorSymbols"
-            app:layout_constraintBottom_toTopOf="@id/buttonSeven"
-            app:layout_constraintEnd_toStartOf="@id/buttonCE"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <Button
-            android:id="@+id/buttonCE"
-            android:layout_width="@dimen/buttonSize"
-            android:layout_height="@dimen/buttonSize"
-            android:layout_margin="@dimen/marginButtons"
-            android:text="@string/ce"
-            android:textSize="@dimen/buttonsDelCe"
-            app:backgroundTint="@color/colorSymbols"
-            app:layout_constraintBottom_toTopOf="@id/buttonEight"
-            app:layout_constraintEnd_toStartOf="@id/buttonC"
-            app:layout_constraintStart_toEndOf="@id/buttonDel"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <Button
-            android:id="@+id/buttonC"
-            android:layout_width="@dimen/buttonSize"
-            android:layout_height="@dimen/buttonSize"
-            android:layout_margin="@dimen/marginButtons"
-            android:text="@string/c"
-            android:textSize="@dimen/buttonNumbers"
-            app:backgroundTint="@color/colorSymbols"
-            app:layout_constraintBottom_toTopOf="@id/buttonNine"
-            app:layout_constraintEnd_toStartOf="@id/buttonSlash"
-            app:layout_constraintStart_toEndOf="@id/buttonCE"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1"
-            app:layout_constraintVertical_chainStyle="packed" />
 
         <Button
             android:id="@+id/buttonOne"
@@ -173,7 +128,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonFour"
             app:layout_constraintEnd_toStartOf="@id/buttonEight"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/buttonDel" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/buttonEight"
@@ -186,7 +141,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonFive"
             app:layout_constraintEnd_toStartOf="@id/buttonNine"
             app:layout_constraintStart_toEndOf="@id/buttonSeven"
-            app:layout_constraintTop_toBottomOf="@id/buttonCE" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/buttonNine"
@@ -199,7 +154,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonSix"
             app:layout_constraintEnd_toStartOf="@id/buttonMultiply"
             app:layout_constraintStart_toEndOf="@id/buttonEight"
-            app:layout_constraintTop_toBottomOf="@id/buttonC" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/buttonZero"
@@ -215,21 +170,6 @@
             app:layout_constraintTop_toBottomOf="@id/buttonTwo" />
 
         <Button
-            android:id="@+id/buttonSlash"
-            android:layout_width="@dimen/buttonSize"
-            android:layout_height="@dimen/buttonSize"
-            android:layout_margin="@dimen/marginButtons"
-            android:text="@string/slash"
-            android:textSize="@dimen/buttonNumbers"
-            app:backgroundTint="@color/colorSymbols"
-            app:layout_constraintBottom_toTopOf="@id/buttonMultiply"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/buttonC"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <Button
             android:id="@+id/buttonMultiply"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
@@ -240,7 +180,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonMinus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/buttonNine"
-            app:layout_constraintTop_toBottomOf="@id/buttonSlash" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/buttonMinus"
@@ -306,6 +246,69 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/buttonPoint"
             app:layout_constraintTop_toBottomOf="@id/buttonPlus" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/constraintLayoutOne">
+
+        <Button
+            android:id="@+id/buttonSlash"
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSize"
+            android:layout_margin="@dimen/marginButtons"
+            android:text="@string/slash"
+            android:textSize="@dimen/buttonNumbers"
+            app:backgroundTint="@color/colorSymbols"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonDel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <Button
+            android:id="@+id/buttonDel"
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSize"
+            android:layout_margin="@dimen/marginButtons"
+            android:text="@string/del"
+            android:textSize="@dimen/buttonsDelCe"
+            app:backgroundTint="@color/colorSymbols"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonCE"
+            app:layout_constraintStart_toEndOf="@id/buttonSlash"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonCE"
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSize"
+            android:layout_margin="@dimen/marginButtons"
+            android:text="@string/ce"
+            android:textSize="@dimen/buttonsDelCe"
+            app:backgroundTint="@color/colorSymbols"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonC"
+            app:layout_constraintStart_toEndOf="@id/buttonDel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonC"
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSize"
+            android:layout_margin="@dimen/marginButtons"
+            android:text="@string/c"
+            android:textSize="@dimen/buttonNumbers"
+            app:backgroundTint="@color/colorSymbols"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonSlash"
+            app:layout_constraintStart_toEndOf="@id/buttonCE"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
