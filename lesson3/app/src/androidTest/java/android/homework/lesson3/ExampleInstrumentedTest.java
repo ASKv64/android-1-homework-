@@ -1,4 +1,4 @@
-package android.homework.lesson2;
+package android.homework.lesson3;
 
 import android.content.Context;
 
