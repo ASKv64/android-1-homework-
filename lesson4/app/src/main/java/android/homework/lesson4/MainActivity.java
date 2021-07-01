@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,35 +18,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final String LOG_TAG = "myLogs";
     private float first = 0F;
     private float second = 0F;
+
     private int action = 0;
     private int nP = 0;
     private int point = 0;
     private int equally = 0;
-    private float answer;
-    private final int light = 0;
-    private final int dark = 1;
+    private float answer = 0F;
 
     private TextView textViewOne;
     private TextView textViewTwo;
 
+    private final int THEME_LIGHT = 0;
+    private final int THEME_DARK = 1;
+
     private final String KEY_PREF_ = "key";
     private final String APP_THEME_ = "theme";
-
-    RadioButton rButtonOne = findViewById(R.id.radioButtonOne);
-    RadioButton rButtonTwo = findViewById(R.id.radioButtonTwo);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(convCodeToStyle(getTheme()));
+        setAppTheme(convThemeToStyle(getAppTheme()));
         setContentView(R.layout.activity_main);
+        initChanger();
         Log.d(LOG_TAG, "onCreate");
 
         textViewOne = findViewById(R.id.textView);
         textViewTwo = findViewById(R.id.textView2);
-
-        rButtonOne = findViewById(R.id.radioButtonOne);
-        rButtonTwo = findViewById(R.id.radioButtonTwo);
 
         Button bDel = findViewById(R.id.buttonDel);
         Button bCE = findViewById(R.id.buttonCE);
@@ -97,36 +93,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bEqually.setOnClickListener(this);
     }
 
-    private int convCodeToStyle(int codeStyle) {
-        switch(codeStyle) {
-            case light:
-                return R.style. ;
-            case dark:
-                return R.style. ;
+    private int convThemeToStyle(int theme) {
+        if (theme == THEME_DARK) {
+            return R.style.dark;
         }
+        return R.style.light;
     }
 
-    private void initTheme(RadioButton rButton, int theme) {
-        rButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setTheme(theme);
-                recreate();
-            }
+    private void initChanger() {
+        initButton(findViewById(R.id.radioButtonOne), THEME_LIGHT);
+        initButton(findViewById(R.id.radioButtonTwo), THEME_DARK);
+    }
+
+    private void initButton(RadioButton rButton, int theme) {
+        rButton.setOnClickListener(v -> {
+            setAppTheme(theme);
+            recreate();
         });
     }
 
-    public void setTheme(int codeStyle) {
+    public void setAppTheme(int theme) {
         SharedPreferences sharedPreferences = getSharedPreferences(KEY_PREF_, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(APP_THEME_, codeStyle);
+        editor.putInt(APP_THEME_, theme);
         editor.apply();
     }
 
-    public int getTheme() {
-        int codeStyle = light;
+    public int getAppTheme() {
         SharedPreferences sharedPreferences = getSharedPreferences(KEY_PREF_, MODE_PRIVATE);
-        return sharedPreferences.getInt(APP_THEME_, codeStyle);
+        return sharedPreferences.getInt(APP_THEME_, THEME_LIGHT);
     }
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -142,15 +137,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        a = (String) textViewOne.getText();
-        b = (String) textViewTwo.getText();
+        Log.d(LOG_TAG, "onSaveInstanceState");
         outState.putInt("point",point);
         outState.putInt("nP", nP);
         outState.putInt("action", action);
         outState.putInt("equally", equally);
-        outState.putString("textViewOne", a);
-        outState.putString("textViewTwo", b);
-        Log.d(LOG_TAG, "onSaveInstanceState");
+        outState.putString("textViewOne", a = (String) textViewOne.getText());
+        outState.putString("textViewTwo", b = (String) textViewTwo.getText());
     }
 
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
