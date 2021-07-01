@@ -20,4 +20,6 @@
     <string name="negativePositive">+/-</string>
     <string name="point">.</string>
     <string name="equally">=</string>
+    <string name="radioButtonOne">Светлая тема </string>
+    <string name="radioButtonTwo">Темная тема </string>
 </resources>

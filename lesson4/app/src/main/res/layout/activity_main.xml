@@ -5,19 +5,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/sand">
 
-    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-        android:id="@+id/textView"
-        android:layout_width="@dimen/textViewWidth"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/textViewMarginBottom"
-        android:background="@color/textView"
-        android:textAlignment="center"
-        android:textSize="@dimen/textView"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView2"
         android:layout_width="@dimen/textViewWidth"
@@ -29,6 +16,46 @@
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/textView"
+        android:layout_width="@dimen/textViewWidth"
+        android:layout_height="wrap_content"
+        android:background="@color/textView"
+        android:textAlignment="center"
+        android:textSize="@dimen/textView"
+        android:layout_marginBottom="@dimen/textViewMarginBottom"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/radioGroup"
+        android:textAlignment="center"
+        android:orientation='horizontal'
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radioButtonOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButtonOne"
+            android:textColor="@color/buttonsTextColor" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radioButtonTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButtonTwo"
+            android:textColor="@color/buttonsTextColor" />
+
+    </RadioGroup>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"

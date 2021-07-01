@@ -3,40 +3,56 @@ package android.homework.lesson4;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    String a;
-    String b;
-    final String LOG_TAG = "myLogs";
-    float first = 0F;
-    float second = 0F;
-    int action = 0;
-    int nP = 0;
-    int point = 0;
-    int equally = 0;
-    float answer;
+    private String a;
+    private String b;
+    private final String LOG_TAG = "myLogs";
+    private float first = 0F;
+    private float second = 0F;
+    private int action = 0;
+    private int nP = 0;
+    private int point = 0;
+    private int equally = 0;
+    private float answer;
+    private final int light = 0;
+    private final int dark = 1;
 
-    TextView textViewOne;
-    TextView textViewTwo;
+    private TextView textViewOne;
+    private TextView textViewTwo;
+
+    private final String KEY_PREF_ = "key";
+    private final String APP_THEME_ = "theme";
+
+    RadioButton rButtonOne = findViewById(R.id.radioButtonOne);
+    RadioButton rButtonTwo = findViewById(R.id.radioButtonTwo);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(convCodeToStyle(getTheme()));
         setContentView(R.layout.activity_main);
         Log.d(LOG_TAG, "onCreate");
 
         textViewOne = findViewById(R.id.textView);
         textViewTwo = findViewById(R.id.textView2);
 
+        rButtonOne = findViewById(R.id.radioButtonOne);
+        rButtonTwo = findViewById(R.id.radioButtonTwo);
+
         Button bDel = findViewById(R.id.buttonDel);
         Button bCE = findViewById(R.id.buttonCE);
         Button bC = findViewById(R.id.buttonC);
+
         Button b1 = findViewById(R.id.buttonOne);
         Button b2 = findViewById(R.id.buttonTwo);
         Button b3 = findViewById(R.id.buttonThree);
@@ -47,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button b8 = findViewById(R.id.buttonEight);
         Button b9 = findViewById(R.id.buttonNine);
         Button b0 = findViewById(R.id.buttonZero);
+
         Button bSlash = findViewById(R.id.buttonSlash);
         Button bMultiply = findViewById(R.id.buttonMultiply);
         Button bMinus = findViewById(R.id.buttonMinus);
@@ -58,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bDel.setOnClickListener(this);
         bCE.setOnClickListener(this);
         bC.setOnClickListener(this);
+
         bC.setOnClickListener(this);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
@@ -69,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b8.setOnClickListener(this);
         b9.setOnClickListener(this);
         b0.setOnClickListener(this);
+
         bSlash.setOnClickListener(this);
         bMultiply.setOnClickListener(this);
         bMinus.setOnClickListener(this);
@@ -76,6 +95,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bNegativePositive.setOnClickListener(this);
         bPoint.setOnClickListener(this);
         bEqually.setOnClickListener(this);
+    }
+
+    private int convCodeToStyle(int codeStyle) {
+        switch(codeStyle) {
+            case light:
+                return R.style. ;
+            case dark:
+                return R.style. ;
+        }
+    }
+
+    private void initTheme(RadioButton rButton, int theme) {
+        rButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTheme(theme);
+                recreate();
+            }
+        });
+    }
+
+    public void setTheme(int codeStyle) {
+        SharedPreferences sharedPreferences = getSharedPreferences(KEY_PREF_, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(APP_THEME_, codeStyle);
+        editor.apply();
+    }
+
+    public int getTheme() {
+        int codeStyle = light;
+        SharedPreferences sharedPreferences = getSharedPreferences(KEY_PREF_, MODE_PRIVATE);
+        return sharedPreferences.getInt(APP_THEME_, codeStyle);
     }
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -271,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
                 equally = 1;
-                textViewOne.setText("=\n" + answer);
+                textViewOne.setText("=" + answer);
                 if (a.charAt(i) == '.') textViewTwo.setText(b + a.substring(0, a.length() - 1));
                 else textViewTwo.setText(b + a);
                 break;
