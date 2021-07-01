@@ -26,10 +26,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textViewOne;
     TextView textViewTwo;
 
+    private final int THEME_LIGHT = 0;
+    private final int THEME_DARK = 1;
+
+    private final String KEY_PREF_ = "key";
+    private final String APP_THEME_ = "theme";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setAppTheme(convThemeToStyle(getAppTheme()));
         setContentView(R.layout.activity_main);
+        initChanger();
         Log.d(LOG_TAG, "onCreate");
 
         textViewOne = findViewById(R.id.textView);
@@ -77,6 +85,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bNegativePositive.setOnClickListener(this);
         bPoint.setOnClickListener(this);
         bEqually.setOnClickListener(this);
+    }
+
+        private int convThemeToStyle(int theme) {
+        if (theme == THEME_DARK) {
+            return R.style.dark;
+        }
+        return R.style.light;
+    }
+
+    public void setAppTheme(int theme) {
+        SharedPreferences sharedPreferences = getSharedPreferences(KEY_PREF_, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(APP_THEME_, theme);
+        editor.apply();
+    }
+
+    public int getAppTheme() {
+        SharedPreferences sharedPreferences = getSharedPreferences(KEY_PREF_, MODE_PRIVATE);
+        return sharedPreferences.getInt(APP_THEME_, THEME_LIGHT);
+    }
+
+    private void initButton(RadioButton rButton, int theme) {
+        rButton.setOnClickListener(v -> {
+            setAppTheme(theme);
+            recreate();
+        });
+    }
+
+    private void initChanger() {
+        initButton(findViewById(R.id.radioButtonOne), THEME_LIGHT);
+        initButton(findViewById(R.id.radioButtonTwo), THEME_DARK);
     }
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {

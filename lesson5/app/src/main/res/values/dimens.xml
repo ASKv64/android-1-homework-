@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="buttonSize">70dp</dimen>
+    <dimen name="marginButtons">5dp</dimen>
+    <dimen name="editTextHeight">100dp</dimen>
+    <dimen name="textView">50sp</dimen>
+    <dimen name="textViewWidth">320dp</dimen>
+    <dimen name="textViewMarginBottom">20dp</dimen>
+    <dimen name="buttonNumbers">30sp</dimen>
+    <dimen name="buttonsDelCe">18sp</dimen>
+</resources>
