@@ -1,4 +1,4 @@
-package android.homework.lesson4;
+package android.homework.lesson3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,20 +13,18 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String a;
-    private String b;
-    private final String LOG_TAG = "myLogs";
-    private float first = 0F;
-    private float second = 0F;
+    String a;
+    String b;
+    final String LOG_TAG = "myLogs";
+    float first = 0F;
+    float second = 0F;
+    int action = 0;
+    int nP = 0;
+    int point = 0;
+    int equally = 0;
 
-    private int action = 0;
-    private int nP = 0;
-    private int point = 0;
-    private int equally = 0;
-    private float answer = 0F;
-
-    private TextView textViewOne;
-    private TextView textViewTwo;
+    TextView textViewOne;
+    TextView textViewTwo;
 
     private final int THEME_LIGHT = 0;
     private final int THEME_DARK = 1;
@@ -48,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button bDel = findViewById(R.id.buttonDel);
         Button bCE = findViewById(R.id.buttonCE);
         Button bC = findViewById(R.id.buttonC);
-
         Button b1 = findViewById(R.id.buttonOne);
         Button b2 = findViewById(R.id.buttonTwo);
         Button b3 = findViewById(R.id.buttonThree);
@@ -59,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button b8 = findViewById(R.id.buttonEight);
         Button b9 = findViewById(R.id.buttonNine);
         Button b0 = findViewById(R.id.buttonZero);
-
         Button bSlash = findViewById(R.id.buttonSlash);
         Button bMultiply = findViewById(R.id.buttonMultiply);
         Button bMinus = findViewById(R.id.buttonMinus);
@@ -71,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bDel.setOnClickListener(this);
         bCE.setOnClickListener(this);
         bC.setOnClickListener(this);
-
         bC.setOnClickListener(this);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
@@ -83,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b8.setOnClickListener(this);
         b9.setOnClickListener(this);
         b0.setOnClickListener(this);
-
         bSlash.setOnClickListener(this);
         bMultiply.setOnClickListener(this);
         bMinus.setOnClickListener(this);
@@ -93,23 +87,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bEqually.setOnClickListener(this);
     }
 
-    private int convThemeToStyle(int theme) {
+        private int convThemeToStyle(int theme) {
         if (theme == THEME_DARK) {
             return R.style.dark;
         }
         return R.style.light;
-    }
-
-    private void initChanger() {
-        initButton(findViewById(R.id.radioButtonOne), THEME_LIGHT);
-        initButton(findViewById(R.id.radioButtonTwo), THEME_DARK);
-    }
-
-    private void initButton(RadioButton rButton, int theme) {
-        rButton.setOnClickListener(v -> {
-            setAppTheme(theme);
-            recreate();
-        });
     }
 
     public void setAppTheme(int theme) {
@@ -122,6 +104,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public int getAppTheme() {
         SharedPreferences sharedPreferences = getSharedPreferences(KEY_PREF_, MODE_PRIVATE);
         return sharedPreferences.getInt(APP_THEME_, THEME_LIGHT);
+    }
+
+    private void initButton(RadioButton rButton, int theme) {
+        rButton.setOnClickListener(v -> {
+            setAppTheme(theme);
+            recreate();
+        });
+    }
+
+    private void initChanger() {
+        initButton(findViewById(R.id.radioButtonOne), THEME_LIGHT);
+        initButton(findViewById(R.id.radioButtonTwo), THEME_DARK);
     }
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -137,13 +131,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.d(LOG_TAG, "onSaveInstanceState");
+        a = (String) textViewOne.getText();
+        b = (String) textViewTwo.getText();
         outState.putInt("point",point);
         outState.putInt("nP", nP);
         outState.putInt("action", action);
         outState.putInt("equally", equally);
-        outState.putString("textViewOne", a = (String) textViewOne.getText());
-        outState.putString("textViewTwo", b = (String) textViewTwo.getText());
+        outState.putString("textViewOne", a);
+        outState.putString("textViewTwo", b);
+        Log.d(LOG_TAG, "onSaveInstanceState");
     }
 
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
@@ -282,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.buttonEqually:
-                answer = 0F;
+                float answer = 0F;
                 if (action == 0) {
                     break;
                 } else if (action == 1) {
@@ -315,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
                 equally = 1;
-                textViewOne.setText("=" + answer);
+                textViewOne.setText("= " + answer);
                 if (a.charAt(i) == '.') textViewTwo.setText(b + a.substring(0, a.length() - 1));
                 else textViewTwo.setText(b + a);
                 break;

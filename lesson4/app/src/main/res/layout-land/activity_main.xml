@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/sand">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/textView"
         android:layout_width="@dimen/textViewWidth"
         android:layout_height="wrap_content"
@@ -14,11 +13,11 @@
         android:textAlignment="center"
         android:textSize="@dimen/textView"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutTwo"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/constraintLayoutOne" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/textView2"
         android:layout_width="@dimen/textViewWidth"
         android:layout_height="wrap_content"
@@ -30,23 +29,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/constraintLayoutOne" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/radioGroup"
+        android:orientation='horizontal'
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutTwo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayoutOne">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radioButtonOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButtonOne"
+            android:textColor="@color/buttonsTextColor" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radioButtonTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButtonTwo"
+            android:textColor="@color/buttonsTextColor" />
+
+    </RadioGroup>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/constraintLayoutTwo"
-        app:layout_constraintHorizontal_bias="0.5">
+        app:layout_constraintEnd_toStartOf="@id/constraintLayoutTwo">
 
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonOne"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_1"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonNegativePositive"
@@ -54,13 +79,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttonFour" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonTwo"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_2"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonZero"
@@ -68,13 +92,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonOne"
             app:layout_constraintTop_toBottomOf="@id/buttonFive" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonThree"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_3"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonPoint"
@@ -82,13 +105,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonTwo"
             app:layout_constraintTop_toBottomOf="@id/buttonSix" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonFour"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_4"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonOne"
@@ -96,13 +118,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttonSeven" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonFive"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_5"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonTwo"
@@ -110,13 +131,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonFour"
             app:layout_constraintTop_toBottomOf="@id/buttonEight" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonSix"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_6"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonThree"
@@ -124,13 +144,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonFive"
             app:layout_constraintTop_toBottomOf="@id/buttonNine" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonSeven"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_7"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonFour"
@@ -138,13 +157,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonEight"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_8"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonFive"
@@ -152,13 +170,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonSeven"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonNine"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_9"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toTopOf="@id/buttonSix"
@@ -166,13 +183,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonEight"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonZero"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/_0"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorNumbers"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -180,13 +196,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonNegativePositive"
             app:layout_constraintTop_toBottomOf="@id/buttonTwo" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonMultiply"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/multiply"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toTopOf="@id/buttonMinus"
@@ -194,13 +209,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonNine"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonMinus"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/minus"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toTopOf="@id/buttonPlus"
@@ -208,13 +222,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonSix"
             app:layout_constraintTop_toBottomOf="@id/buttonMultiply" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonPlus"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/plus"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toTopOf="@id/buttonEqually"
@@ -222,13 +235,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonThree"
             app:layout_constraintTop_toBottomOf="@id/buttonMinus" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonNegativePositive"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/negativePositive"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonsDelCe"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -236,13 +248,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttonOne" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonPoint"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/point"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -250,13 +261,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonZero"
             app:layout_constraintTop_toBottomOf="@id/buttonThree" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonEqually"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/equally"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorEqually"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -274,13 +284,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/constraintLayoutOne">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonSlash"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/slash"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -289,13 +298,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonDel"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/del"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonsDelCe"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -303,13 +311,12 @@
             app:layout_constraintStart_toEndOf="@id/buttonSlash"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonCE"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/ce"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonsDelCe"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -317,19 +324,19 @@
             app:layout_constraintStart_toEndOf="@id/buttonDel"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonC"
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSize"
             android:layout_margin="@dimen/marginButtons"
             android:text="@string/c"
-            android:textColor="@color/buttonsTextColor"
             android:textSize="@dimen/buttonNumbers"
             app:backgroundTint="@color/colorSymbols"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/buttonSlash"
             app:layout_constraintStart_toEndOf="@id/buttonCE"
             app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -11,4 +11,6 @@
     <color name="colorSymbols">#64A199</color>
     <color name="colorNumbers">#5A5BA6</color>
     <color name="textView">#AD7FC8FF</color>
+    <color name="radioGroup">#953F51B5</color>
+    <color name="buttonsTextColor">#FFFFFFFF</color>
 </resources>
