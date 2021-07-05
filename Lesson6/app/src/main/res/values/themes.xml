@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Lesson2" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Lesson6" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,23 +13,4 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-
-    <style name="MyTheme" parent="Theme.Lesson2">
-    </style>
-
-    <style name="light" parent="Theme.MaterialComponents.Light">
-        <item name="colorPrimary">#e91e63</item>
-        <item name="colorPrimaryDark">#b0003a</item>
-        <item name="colorAccent">#ff6090</item>
-        <item name="android:background">@drawable/sand</item>
-    </style>
-
-    <style name="dark" parent="Theme.MaterialComponents">
-        <item name="colorPrimary">#1E40E9</item>
-        <item name="colorPrimaryDark">#131871</item>
-        <item name="colorAccent">#1827B1</item>
-        <item name="android:background">@drawable/sand_dark</item>
-    </style>
-
-
 </resources>

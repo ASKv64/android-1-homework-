@@ -2,6 +2,7 @@ package android.homework.lesson3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,34 +12,35 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String a;
-    String b;
-    final String LOG_TAG = "myLogs";
-    float first = 0F;
-    float second = 0F;
-    int action = 0;
-    int nP = 0;
-    int point = 0;
-    int equally = 0;
+    private String a;
+    private String b;
+    private final String LOG_TAG = "myLogs";
+    private float first = 0F;
+    private float second = 0F;
+    private int action = 0;
+    private int nP = 0;
+    private int point = 0;
+    private int equally = 0;
 
-    TextView textViewOne;
-    TextView textViewTwo;
+    private TextView textViewOne;
+    private TextView textViewTwo;
 
-    private final int THEME_LIGHT = 0;
-    private final int THEME_DARK = 1;
+    private static final int THEME_LIGHT = 1;
+    private static final int THEME_DARK = 2;
 
-    private final String KEY_PREF_ = "key";
-    private final String APP_THEME_ = "theme";
+    private static final String KEY_PREF_ = "key";
+    private static final String APP_THEME_ = "theme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(LOG_TAG, "onCreate");
         setAppTheme(convThemeToStyle(getAppTheme()));
+        Log.d(LOG_TAG, "setAppTheme(convThemeToStyle(getAppTheme()))");
         setContentView(R.layout.activity_main);
         initChanger();
-        Log.d(LOG_TAG, "onCreate");
 
         textViewOne = findViewById(R.id.textView);
         textViewTwo = findViewById(R.id.textView2);
@@ -87,10 +89,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bEqually.setOnClickListener(this);
     }
 
-        private int convThemeToStyle(int theme) {
+    private int convThemeToStyle(int theme) {
         if (theme == THEME_DARK) {
+            Log.d(LOG_TAG, "dark");
             return R.style.dark;
+
         }
+        Log.d(LOG_TAG, "light");
         return R.style.light;
     }
 
@@ -99,10 +104,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(APP_THEME_, theme);
         editor.apply();
+        Log.d(LOG_TAG, "setAppTheme " + theme);
     }
 
     public int getAppTheme() {
         SharedPreferences sharedPreferences = getSharedPreferences(KEY_PREF_, MODE_PRIVATE);
+        Log.d(LOG_TAG, "getAppTheme");
         return sharedPreferences.getInt(APP_THEME_, THEME_LIGHT);
     }
 
@@ -110,16 +117,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rButton.setOnClickListener(v -> {
             setAppTheme(theme);
             recreate();
+            Log.d(LOG_TAG, "initButton");
         });
     }
 
     private void initChanger() {
         initButton(findViewById(R.id.radioButtonOne), THEME_LIGHT);
         initButton(findViewById(R.id.radioButtonTwo), THEME_DARK);
+        Log.d(LOG_TAG, "initChanger" + "\npoint = " + point + "\nnP = " + nP + "\naction = " + action + "\nequally = " + equally + "\nfirst = " + first + "\nsecond = " + second);
     }
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        first = savedInstanceState.getInt("first");
+        second = savedInstanceState.getInt("second");
         nP = savedInstanceState.getInt("nP");
         action = savedInstanceState.getInt("action");
         point = savedInstanceState.getInt("point");
@@ -131,18 +142,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        a = (String) textViewOne.getText();
-        b = (String) textViewTwo.getText();
-        outState.putInt("point",point);
+        outState.putFloat("first", first);
+        outState.putFloat("second", second);
+        outState.putInt("point", point);
         outState.putInt("nP", nP);
         outState.putInt("action", action);
         outState.putInt("equally", equally);
-        outState.putString("textViewOne", a);
-        outState.putString("textViewTwo", b);
+        outState.putString("textViewOne", a = (String) textViewOne.getText());
+        outState.putString("textViewTwo", b = (String) textViewTwo.getText());
         Log.d(LOG_TAG, "onSaveInstanceState");
     }
 
-    @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
+    @SuppressLint({"NonConstantResourceId", "SetTextI18n", "NewApi"})
     @Override
     public void onClick(View v) {
         if (equally == 1) {
@@ -158,11 +169,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int i = a.length() - 1;
         switch (v.getId()) {
             case R.id.buttonDel:
-                if (a.length() > 0){
-                    if (a.charAt(i) == '-'){
+                if (a.length() > 0) {
+                    if (a.charAt(i) == '-') {
                         nP = 0;
                     }
-                    if (a.charAt(i) == '.'){
+                    if (a.charAt(i) == '.') {
                         point = 0;
                     }
                     textViewOne.setText(a.substring(0, a.length() - 1));
@@ -214,10 +225,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonSlash:
                 if (a.length() != 0) {
                     first = Float.parseFloat(a);
+                    second = first;
                     action = 1;
                     nP = 0;
                     point = 0;
-                    if (a.charAt(i) == '.') textViewTwo.setText(a.substring(0, a.length() - 1) + " / ");
+                    if (a.charAt(i) == '.')
+                        textViewTwo.setText(a.substring(0, a.length() - 1) + " / ");
                     else textViewTwo.setText(a + " / ");
                     textViewOne.setText("");
                 }
@@ -225,10 +238,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonMultiply:
                 if (a.length() != 0) {
                     first = Float.parseFloat(a);
+                    second = first;
                     action = 2;
                     nP = 0;
                     point = 0;
-                    if (a.charAt(i) == '.') textViewTwo.setText(a.substring(0, a.length() - 1) + " * ");
+                    if (a.charAt(i) == '.')
+                        textViewTwo.setText(a.substring(0, a.length() - 1) + " * ");
                     else textViewTwo.setText(a + " * ");
                     textViewOne.setText("");
                 }
@@ -236,10 +251,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonMinus:
                 if (a.length() != 0) {
                     first = Float.parseFloat(a);
+                    second = first;
                     action = 3;
                     nP = 0;
                     point = 0;
-                    if (a.charAt(i) == '.') textViewTwo.setText(a.substring(0, a.length() - 1) + " - ");
+                    if (a.charAt(i) == '.')
+                        textViewTwo.setText(a.substring(0, a.length() - 1) + " - ");
                     else textViewTwo.setText(a + " - ");
                     textViewOne.setText("");
                 }
@@ -247,10 +264,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonPlus:
                 if (a.length() != 0) {
                     first = Float.parseFloat(a);
+                    second = first;
                     action = 4;
                     nP = 0;
                     point = 0;
-                    if (a.charAt(i) == '.') textViewTwo.setText(a.substring(0, a.length() - 1) + " + ");
+                    if (a.charAt(i) == '.')
+                        textViewTwo.setText(a.substring(0, a.length() - 1) + " + ");
                     else textViewTwo.setText(a + " + ");
                     textViewOne.setText("");
                 }
@@ -282,28 +301,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (action == 0) {
                     break;
                 } else if (action == 1) {
-                    if(a.length() == 0) {
+                    if (a.length() == 0) {
                         break;
                     } else {
                         second = Float.parseFloat(a);
                         answer = first / second;
                     }
                 } else if (action == 2) {
-                    if(a.length() == 0) {
+                    if (a.length() == 0) {
                         break;
                     } else {
                         second = Float.parseFloat(a);
                         answer = first * second;
                     }
                 } else if (action == 3) {
-                    if(a.length() == 0) {
+                    if (a.length() == 0) {
                         break;
                     } else {
                         second = Float.parseFloat(a);
                         answer = first - second;
                     }
                 } else if (action == 4) {
-                    if(a.length() == 0) {
+                    if (a.length() == 0) {
                         break;
                     } else {
                         second = Float.parseFloat(a);
@@ -316,5 +335,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else textViewTwo.setText(b + a);
                 break;
         }
+        Log.d(LOG_TAG, " " + v + "\npoint = " + point + "\nnP = " + nP + "\naction = " +
+                action + "\nequally = " + equally + "\nfirst = " + first + "\nsecond = " + second);
     }
 }
