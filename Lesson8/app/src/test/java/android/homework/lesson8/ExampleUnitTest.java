@@ -1,4 +1,4 @@
-package android.homework.lesson3;
+package android.homework.lesson8;
 
 import org.junit.Test;
 

@@ -7,10 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorEqually">#4CAF50</color>
-    <color name="colorSymbols">#64A199</color>
-    <color name="colorNumbers">#5A5BA6</color>
-    <color name="textView">#AD7FC8FF</color>
-    <color name="radioGroup">#953F51B5</color>
-    <color name="buttonsTextColor">#FFFFFFFF</color>
+
+    <color name="colorEquallyLight">#4CAF50</color>
+    <color name="colorSymbolsLight">#64A199</color>
+    <color name="colorNumbersLight">#5A5BA6</color>
+    <color name="textViewLight">#AD7FC8FF</color>
+    <color name="radioGroupLight">#953F51B5</color>
+    <color name="buttonsTextColorLight">#FFFFFFFF</color>
+
+    <color name="colorEquallyDark">#4CAF50</color>
+    <color name="colorSymbolsDark">#64A199</color>
+    <color name="colorNumbersDark">#5A5BA6</color>
+    <color name="textViewDark">#AD7FC8FF</color>
+    <color name="radioGroupDark">#953F51B5</color>
+    <color name="buttonsTextColorDark">#FFFFFFFF</color>
 </resources>

@@ -1,4 +1,4 @@
-package android.homework.lesson3;
+package android.homework.lesson4;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textViewOne;
     private TextView textViewTwo;
 
-    private static final int THEME_LIGHT = 1;
-    private static final int THEME_DARK = 2;
+    private static final int THEME_LIGHT = 0;
+    private static final int THEME_DARK = 1;
 
     private static final String KEY_PREF_ = "key";
     private static final String APP_THEME_ = "theme";
@@ -90,13 +90,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private int convThemeToStyle(int theme) {
-        if (theme == THEME_DARK) {
+        if (theme == THEME_LIGHT) {
+            Log.d(LOG_TAG, "light");
+            return R.style.light;
+        } else {
             Log.d(LOG_TAG, "dark");
             return R.style.dark;
-
         }
-        Log.d(LOG_TAG, "light");
-        return R.style.light;
     }
 
     public void setAppTheme(int theme) {
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(APP_THEME_, theme);
         editor.apply();
-        Log.d(LOG_TAG, "setAppTheme " + theme);
+        Log.d(LOG_TAG, "setAppTheme " + theme + " " + MODE_PRIVATE);
     }
 
     public int getAppTheme() {
